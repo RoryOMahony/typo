@@ -1,0 +1,15 @@
+.text-component {
+  color: white;
+  text-align: justify;
+  min-width: 30vw;
+  max-width: 60vw;
+  display: inline-block;
+}
+
+.text-component>span.correct{
+  background-color: green;
+}
+
+.text-component>span.incorrect{
+  background-color: red;
+}
