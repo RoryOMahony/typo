@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useReducer } from "react";
+import React, { useEffect, useCallback, useReducer, useState } from "react";
 import { TextComponent } from "../text/TextComponent";
 import "./TypoComponent.css";
 import { retrieveText } from "../../objects/TextRetriever";
@@ -8,12 +8,22 @@ import {
   TEST_INFO_REDUCER_ACTIONS
 } from "../../reducers/TestInfoReducer";
 import { TestInfo } from "../../objects/TestInfo";
+import { retrieveExampleSongInfo } from "../../objects/SongInfoRetriever";
 
 export const TypoComponent = () => {
   const [testInfo, testInfoDispatch] = useReducer(
     TestInfoReducer,
     new TestInfo(retrieveText())
   );
+  const [data, setData] = useState("");
+
+  useEffect(() => {
+    retrieveExampleSongInfo("Muse", "Showbiz")
+      .then(songInfo => songInfo.songLyrics)
+      .then(lyrics => lyrics.replace(/\n\n/g, "\n"))
+      .then(lyrics => lyrics.replace(/\n/g, ". "))
+      .then(lyrics => setData(lyrics));
+  }, []);
 
   const logKeyPress = useCallback(
     event => {
@@ -39,8 +49,14 @@ export const TypoComponent = () => {
   return (
     <div>
       <div id="text-component-container">
-        <TextComponent
+        {/* <TextComponent
           text={testInfo.text}
+          currentCharacterIndex={testInfo.currentCharacterIndex}
+          numOfKeyPresses={testInfo.numOfKeysPressed}
+          keyPressed={testInfo.keyPressed}
+        ></TextComponent> */}
+        <TextComponent
+          text={data}
           currentCharacterIndex={testInfo.currentCharacterIndex}
           numOfKeyPresses={testInfo.numOfKeysPressed}
           keyPressed={testInfo.keyPressed}
