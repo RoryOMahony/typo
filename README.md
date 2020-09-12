@@ -1,5 +1,14 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Typo
+
+## Project Aims:
+
+- To learn Typescript and how it works with React
+- To connect an application to an API and retrieve different data based on user input
+
+---
+
 ## Available Scripts
 
 In the project directory, you can run:
