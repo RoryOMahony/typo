@@ -6,6 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - To learn Typescript and how it works with React
 - To connect an application to an API and retrieve different data based on user input
+- To learn how to make a responsive application that works on different sized devices
 
 ---
 
